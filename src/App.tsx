@@ -26,7 +26,7 @@ const apps: AppConfig[] = [
   {
     id: 'algo',
     name: 'Algo',
-    url: 'http://algo-app.pecode.com/',
+    url: 'https://algo-app.pecode.com/',
     githubUrl: 'https://github.com/toyohisa2nakada/algo-app',
     sourceUrl: 'https://github.com/toyohisa2nakada/algo-app/blob/main/algo-ai.ts',
   },

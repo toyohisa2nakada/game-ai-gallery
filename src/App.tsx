@@ -6,6 +6,7 @@ interface AppConfig {
   url: string;
   githubUrl: string;
   sourceUrl: string;
+  zoom: number;
 }
 
 const apps: AppConfig[] = [
@@ -15,6 +16,7 @@ const apps: AppConfig[] = [
     url: 'https://quoridor-app.pecode.com/',
     githubUrl: 'https://github.com/toyohisa2nakada/quoridor-app',
     sourceUrl: 'https://github.com/toyohisa2nakada/quoridor-app/blob/main/src/game/quoridor_ai.ts',
+    zoom: 0.66,
   },
   {
     id: 'sniper',
@@ -22,6 +24,7 @@ const apps: AppConfig[] = [
     url: 'https://sniper-app.pecode.com/',
     githubUrl: 'https://github.com/toyohisa2nakada/sniper-app',
     sourceUrl: 'https://github.com/toyohisa2nakada/sniper-app/blob/main/src/extentions/agent.ts',
+    zoom: 0.55,
   },
   {
     id: 'algo',
@@ -29,6 +32,7 @@ const apps: AppConfig[] = [
     url: 'https://algo-app.pecode.com/',
     githubUrl: 'https://github.com/toyohisa2nakada/algo-app',
     sourceUrl: 'https://github.com/toyohisa2nakada/algo-app/blob/main/algo-ai.ts',
+    zoom: 0.70,
   },
   {
     id: 'gomoku',
@@ -36,6 +40,7 @@ const apps: AppConfig[] = [
     url: 'https://gomoku-app.pecode.com/',
     githubUrl: 'https://github.com/toyohisa2nakada/gomoku-app',
     sourceUrl: 'https://github.com/toyohisa2nakada/gomoku-app/blob/main/gomoku_ai.js',
+    zoom: 0.6,
   }
 ];
 
@@ -54,6 +59,12 @@ const CodeIcon = () => (
 );
 
 function App() {
+  const getIframeScale = (zoom: number) => ({
+    width: `${(1 / zoom) * 100}%`,
+    height: `${(1 / zoom) * 100}%`,
+    transform: `scale(${zoom})`,
+    transformOrigin: '0 0'
+  });
   return (
     <div className="gallery-container">
       {apps.map((app) => (
@@ -63,7 +74,7 @@ function App() {
             title={`${app.name} Application`}
             allow="fullscreen; clipboard-write; encrypted-media; picture-in-picture"
             sandbox="allow-same-origin allow-scripts allow-popups allow-forms"
-            scrolling="no"
+            style={getIframeScale(app.zoom)}
           />
           <div className="gallery-overlay">
             <div className="gallery-overlay-left">

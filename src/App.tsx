@@ -1,4 +1,5 @@
 import './App.css';
+import { Header } from './components/Header';
 
 interface AppConfig {
   id: string;
@@ -58,6 +59,8 @@ const CodeIcon = () => (
   </svg>
 );
 
+
+
 function App() {
   const getIframeScale = (zoom: number) => ({
     width: `${(1 / zoom) * 100}%`,
@@ -66,33 +69,36 @@ function App() {
     transformOrigin: '0 0'
   });
   return (
-    <div className="gallery-container">
-      {apps.map((app) => (
-        <div key={app.id} className="gallery-item">
-          <iframe
-            src={app.url}
-            title={`${app.name} Application`}
-            allow="fullscreen; clipboard-write; encrypted-media; picture-in-picture"
-            sandbox="allow-same-origin allow-scripts allow-popups allow-forms"
-            style={getIframeScale(app.zoom)}
-          />
-          <div className="gallery-overlay">
-            <div className="gallery-overlay-left">
-              <div className="status-indicator"></div>
-              <span>{app.name}</span>
-            </div>
-            <div className="gallery-overlay-right">
-              <a href={app.githubUrl} target="_blank" rel="noopener noreferrer" title="GitHub Repository">
-                <GithubIcon />
-              </a>
-              <a href={app.sourceUrl} target="_blank" rel="noopener noreferrer" title="AI Source Code">
-                <CodeIcon />
-              </a>
+    <>
+      <Header />
+      <div className="gallery-container">
+        {apps.map((app) => (
+          <div key={app.id} className="gallery-item">
+            <iframe
+              src={app.url}
+              title={`${app.name} Application`}
+              allow="fullscreen; clipboard-write; encrypted-media; picture-in-picture"
+              sandbox="allow-same-origin allow-scripts allow-popups allow-forms"
+              style={getIframeScale(app.zoom)}
+            />
+            <div className="gallery-overlay">
+              <div className="gallery-overlay-left">
+                <div className="status-indicator"></div>
+                <span>{app.name}</span>
+              </div>
+              <div className="gallery-overlay-right">
+                <a href={app.githubUrl} target="_blank" rel="noopener noreferrer" title="GitHub Repository">
+                  <GithubIcon />
+                </a>
+                <a href={app.sourceUrl} target="_blank" rel="noopener noreferrer" title="AI Source Code">
+                  <CodeIcon />
+                </a>
+              </div>
             </div>
           </div>
-        </div>
-      ))}
-    </div>
+        ))}
+      </div>
+    </>
   );
 }
 

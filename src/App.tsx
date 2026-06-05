@@ -84,7 +84,9 @@ function App() {
             <div className="gallery-overlay">
               <div className="gallery-overlay-left">
                 <div className="status-indicator"></div>
-                <span>{app.name}</span>
+                <a href={app.url} target="_blank" rel="noopener noreferrer">
+                  <span>{app.name}</span>
+                </a>
               </div>
               <div className="gallery-overlay-right">
                 <a href={app.githubUrl} target="_blank" rel="noopener noreferrer" title="GitHub Repository">

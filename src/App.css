@@ -4,7 +4,7 @@
   grid-template-rows: 1fr 1fr;
   gap: var(--grid-gap);
   width: 100vw;
-  height: 100vh;
+  flex: 1;
   padding: var(--grid-gap);
   background: linear-gradient(135deg, #0f172a 0%, #1e1b4b 100%);
 }
@@ -62,7 +62,15 @@
   display: flex;
   align-items: center;
   gap: 10px;
-  pointer-events: none;
+}
+
+.gallery-overlay-left a {
+  color: #fff;
+  text-decoration: none;
+}
+
+.gallery-overlay-left a:visited {
+  color: #fff;
 }
 
 .gallery-overlay-right {
@@ -118,4 +126,3 @@
     grid-template-rows: repeat(4, 1fr);
   }
 }
-
